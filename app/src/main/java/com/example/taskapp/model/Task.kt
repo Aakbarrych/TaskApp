@@ -1,4 +1,4 @@
-package com.example.taskapp.ui.task
+package com.example.taskapp.model
 
 data class Task(
     var title:String?= null,
