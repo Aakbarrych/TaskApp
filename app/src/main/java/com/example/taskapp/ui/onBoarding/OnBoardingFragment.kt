@@ -22,9 +22,12 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        val dosIndicator: DotsIndicator = binding.dotsIndicator
+//        dosIndicator.attachTo(binding.vpBoard)
         val adapter = OnBoardingAdapter(){
             findNavController().navigateUp()
         }
         binding.viewpager.adapter = adapter
+        binding.dotsIndicator.attachTo(binding.viewpager)
     }
 }
