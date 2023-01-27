@@ -10,7 +10,6 @@ class Pref(private val context: Context) {
     fun isUserSeen(): Boolean{
         return pref.getBoolean(SEEN_KEY, false)
     }
-
     fun saveSeen(){
         pref.edit().putBoolean(SEEN_KEY, true).apply()
     }
@@ -18,7 +17,6 @@ class Pref(private val context: Context) {
     fun saveName(name: String){
         pref.edit().putString(NAME_KEY, name).apply()
     }
-
     fun getName(): String{
         return pref.getString(NAME_KEY, "").toString()
     }
@@ -26,7 +24,6 @@ class Pref(private val context: Context) {
     fun saveAge(age: String){
         pref.edit().putString(AGE_KEY, age).apply()
     }
-
     fun getAge(): String{
         return pref.getString(AGE_KEY, "").toString()
     }

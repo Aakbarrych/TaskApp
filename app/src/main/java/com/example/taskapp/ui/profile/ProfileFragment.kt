@@ -20,7 +20,6 @@ class ProfileFragment : Fragment() {
             ActivityResultContracts.GetContent()
         ) { uri ->
             binding.ivProfile.setImageURI(uri)
-
             Pref(requireContext()).saveImage(uri.toString())
         }
 
