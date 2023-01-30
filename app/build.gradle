@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.example.taskapp"
         minSdk 24
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -37,9 +37,9 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.0'
-    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
@@ -56,11 +56,17 @@ dependencies {
     //Indicator
     implementation("com.tbuonomo:dotsindicator:4.3")
 
+    //DataBase
     def room_version = "2.5.0"
-
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
-
     // To use Kotlin annotation processing tool (kapt)
     kapt "androidx.room:room-compiler:$room_version"
+
+    //Input Outline Text
+    implementation 'com.google.android.material:material:1.8.0'
+
+    //Lottie Animations
+    implementation "com.airbnb.android:lottie:5.2.0"
+    implementation 'com.google.accompanist:accompanist-pager:0.12.0'
 }

@@ -8,4 +8,9 @@
     <string name="profile">Profile</string>
     <string name="get_started">Get Started</string>
     <string name="save">Save</string>
+    <string name="your_name">Your Name</string>
+    <string name="your_age">Your Age</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="saveBtn">Save</string>
 </resources>

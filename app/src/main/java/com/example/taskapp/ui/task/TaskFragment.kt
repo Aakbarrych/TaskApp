@@ -31,7 +31,6 @@ class TaskFragment : Fragment() {
                     desc = binding.etDesc.text.toString()
                 )
             )
-
             findNavController().navigateUp()
         }
     }

@@ -1,14 +1,11 @@
 package com.example.taskapp.ui.home
 
 import android.app.AlertDialog
-import android.content.ClipData.Item
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp.App
@@ -21,7 +18,7 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private  lateinit var adapter: TaskAdapter
+    private lateinit var adapter: TaskAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +52,7 @@ class HomeFragment : Fragment() {
     private fun onLongClick(task: Task) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Delete")
-        builder.setMessage("Are you sure ?")
+        builder.setMessage("Are you sure?")
         builder.setPositiveButton("Yes") { _: DialogInterface, _: Int ->
             App.db.taskDao().delete(task)
             setData()

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp.data.Pref
 import com.example.taskapp.databinding.FragmentOnBoardingBinding
+import com.example.taskapp.model.OnBoard
 import com.example.taskapp.ui.onBoarding.adapter.OnBoardingAdapter
 
 class OnBoardingFragment : Fragment() {
