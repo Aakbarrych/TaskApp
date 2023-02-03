@@ -2,7 +2,6 @@ package com.example.taskapp.ui.onBoarding.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RawRes
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -36,7 +35,9 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
         fun bind(onBoard: OnBoard) {
             binding.tvTitle.text = onBoard.title
             binding.tvDesc.text = onBoard.desc
-            binding.image.setAnimation(onBoard.image!!)
+            onBoard.image?.let {
+                binding.image.setAnimation(it)
+            }
 //            binding.image.imageAssetsFolder = "images"
 //            OnBoard().image?.let { binding.image.setAnimation(it) }
 //            binding.image.loadImage(onBoard.image.toString())
