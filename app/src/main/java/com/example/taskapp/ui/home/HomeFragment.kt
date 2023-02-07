@@ -9,16 +9,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.taskapp.App
-import com.example.taskapp.R
 import com.example.taskapp.databinding.FragmentHomeBinding
 import com.example.taskapp.model.Task
 import com.example.taskapp.ui.home.adapter.TaskAdapter
+import com.example.taskapp.utils.isOnline
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: TaskAdapter
+    private var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,11 +40,27 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tasks = App.db.taskDao().getAll()
-        adapter.addTasks(tasks)
+        if(requireContext().isOnline()){
+            getTasks()
+        } else{
+            val tasks = App.db.taskDao().getAll()
+            adapter.addTasks(tasks)
+        }
         binding.recyclerView.adapter = adapter
         binding.fab.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToTaskFragment())
+        }
+    }
+
+    private fun getTasks(){
+        val uid = FirebaseAuth.getInstance().currentUser?.uid
+        if (uid != null) {
+            db.collection(uid).get().addOnSuccessListener {
+                val data = it.toObjects(Task::class.java)
+                adapter.addTasks(data)
+            }.addOnFailureListener{
+
+            }
         }
     }
 

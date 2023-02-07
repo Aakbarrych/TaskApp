@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.navigation.fragment.findNavController
+import com.example.taskapp.R
 import com.example.taskapp.data.Pref
 import com.example.taskapp.databinding.FragmentProfileBinding
 import com.example.taskapp.utils.loadImage
+import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -45,6 +48,10 @@ class ProfileFragment : Fragment() {
 
         binding.ivProfile.setOnClickListener {
             mGetContent.launch("image/*")
+        }
+        binding.btnDeleteAcc.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            findNavController().navigate(R.id.authFragment)
         }
     }
 }

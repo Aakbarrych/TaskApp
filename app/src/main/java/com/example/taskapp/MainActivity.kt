@@ -15,24 +15,16 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var pref: Pref
-    private lateinit var auth: FirebaseAuth
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        pref = Pref(this)
-        auth = FirebaseAuth.getInstance()
         val navView: BottomNavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
-        if (!pref.isUserSeen())
-            navController.navigate(R.id.onBoardingFragment)
 
-        if (auth.currentUser == null){
-            navController.navigate(R.id.authFragment)
-        }
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -52,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         )
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             navView.isVisible = bottomNavFragments.contains(destination.id)
-            if(destination.id == R.id.onBoardingFragment){
+            if(destination.id == R.id.splashFragment || destination.id == R.id.onBoardingFragment){
                 supportActionBar?.hide()
             } else supportActionBar?.show()
         }
